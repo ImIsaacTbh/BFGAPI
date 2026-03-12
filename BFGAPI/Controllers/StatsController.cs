@@ -29,4 +29,20 @@ namespace TestAPI.Controllers
             return "Not implemented yet";
         }
     }
+
+    [Route("common/[controller]")]
+    public class PopupOverlay : ControllerBase
+    {
+        [HttpGet(Name = "GetPopupOverlay")]
+        public string Get()
+        {
+            var data = BFG_API.Data.GetCurrentOverlayInfo();
+            return JsonConvert.SerializeObject(data);
+            //return JsonConvert.SerializeObject(new
+            //{
+            //    title = "BFG 26 is live!",
+            //    subtitle = "this is a subtitle"
+            //});
+        }
+    }
 }

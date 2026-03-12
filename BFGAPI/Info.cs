@@ -20,6 +20,12 @@ namespace Overlays.Common
         public string name;
         public string imageUrl;
     }
+
+    public struct OverlayText
+    {
+        public string header;
+        public string content;
+    }
 }
 
 namespace Data.Common

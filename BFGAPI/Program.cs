@@ -29,6 +29,17 @@ namespace bfgshit
 
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("OverlayPolicy", policy =>
+                {
+                    policy
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+            });
+
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -37,6 +48,8 @@ namespace bfgshit
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
+            app.UseCors("OverlayPolicy");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
